@@ -3,7 +3,8 @@ import { FiPlus, FiTrash2, FiCheck, FiEdit2 } from "react-icons/fi";
 import axios from 'axios';
 
 function Home() {
-    const apiDomain = 'https://narugopal-todo.vercel.app';
+    //const apiDomain = 'https://narugopal-todo.vercel.app';
+    const currentURL = window.location.href;
 
     const [todoText, setTodoText] = useState({ text: "" });
    
@@ -12,7 +13,7 @@ function Home() {
     const [todo, setTodo] = useState([]);
 
     const getTodo = async () => {
-        const res = await axios.get(`${apiDomain}/api`)
+        const res = await axios.get(`${currentURL}/api`)
         const data = await res.data;
         setTodo(data);
     }
@@ -29,14 +30,14 @@ function Home() {
             if (isUpdating === "") {
                 const { text } = todoText;
                 console.log(text);
-                axios.post(`${apiDomain}/api`, { text }).then((res) => {
+                axios.post(`${currentURL}/api`, { text }).then((res) => {
                     console.log(res.data.message);
                     setTodoText({ text: "" });
                     getTodo();
                 }).catch((err) => console.log(err));
                 
             } else {
-                axios.patch(`${apiDomain}/api`, { _id: isUpdating, todoText })
+                axios.patch(`${currentURL}/api`, { _id: isUpdating, todoText })
                     .then((res) => {
                         setTodoText({ text: "" });
                         setUpdating("");
@@ -49,7 +50,7 @@ function Home() {
     }
 
     const deleteTodo = (_id) => {
-        axios.delete(`${apiDomain}/api/${_id}`)
+        axios.delete(`${currentURL}/api/${_id}`)
             .then((res) => {
                 console.log(res.data);
                 getTodo();   
