@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Home() {
   //const apiDomain = 'https://narugopal-todo.vercel.app';
-  const currentURL = window.location.href;
+  const currentURL = window.location.hostname === "localhost" ? 'http://localhost:5000' : `${window.location.href}/`;
 
   const [todoText, setTodoText] = useState({ text: "" });
 
@@ -28,11 +28,11 @@ function Home() {
     } else {
       if (isUpdating === "") {
         const { text } = todoText;
-        console.log(text);
+        // console.log(text);
         axios
           .post(`${currentURL}/api`, { text })
           .then((res) => {
-            console.log(res.data.message);
+            // console.log(res.data.message);
             setTodoText({ text: "" });
             getTodo();
           })
@@ -54,14 +54,14 @@ function Home() {
     axios
       .delete(`${currentURL}/api/${_id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         getTodo();
       })
       .catch((err) => console.log(err));
   };
 
   const updateTodo = (_id, text) => {
-    console.log("updated");
+    // console.log("updated");
     setUpdating(_id);
     setTodoText(() => ({
       text: text,
@@ -113,10 +113,10 @@ function Home() {
                         </div>
                       </div>
                     </form>
-                    {todo.length > 0 ? (
+                    {todo?.length > 0 ? (
                       <div className="mt-3">
                         <ul className="todolist">
-                          {todo.map((item) => {
+                          {todo?.map((item) => {
                             return (
                               <li key={item._id}>
                                 <div className="text">{item.text}</div>

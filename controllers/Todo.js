@@ -55,8 +55,8 @@ module.exports.updateToDo = async (req, res) => {
     try {
         const _id = req.body._id;
         const t = req.body.todoText;
-        console.log(_id);
-        console.log(t);
+        // console.log(_id);
+        // console.log(t);
         await Todo.findByIdAndUpdate(_id, t );
        // const data = res.json();
         res.set(201).send("Updated Successfully...");
