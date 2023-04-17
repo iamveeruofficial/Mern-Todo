@@ -6,12 +6,16 @@ const cors = require("cors");
 
 const routes = require("./router/router");
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+console.log(process.env.FRONTEND_URL);
+
+app.use(cors());
+
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL,
+//     credentials: true,
+//   })
+// );
 
 require("./db/conn");
 

@@ -24,7 +24,8 @@ function Home() {
     getTodo();
   }, []);
 
-  const addUpdateTodo = async () => {
+  const addUpdateTodo = async (e) => {
+    e.preventDefault();
     if (todoText.text === "" || todoText.text.trim() === "") {
       alert("Enter text");
     } else {
@@ -90,7 +91,7 @@ function Home() {
                       <h1 className="h4 m-0 text-white fw-bold">Todo</h1>
                     </div>
                     <div className="p-3">
-                      <form method="POST">
+                      <form onSubmit={addUpdateTodo}>
                         <div className="">
                           <div className="d-flex">
                             <div className="flex-grow-1 ">
@@ -106,8 +107,7 @@ function Home() {
 
                             <div className="flex-shrink-0 ms-2">
                               <button
-                                type="button"
-                                onClick={addUpdateTodo}
+                                type="submit"
                                 className="btn btn-primary  btn-circle"
                               >
                                 {isUpdating ? <FiCheck /> : <FiPlus />}
