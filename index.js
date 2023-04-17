@@ -6,7 +6,6 @@ const cors = require("cors");
 
 const routes = require("./router/router");
 
-console.log(process.env.FRONTEND_URL);
 
 app.use(cors());
 
