@@ -3,11 +3,10 @@ import { FiPlus, FiTrash2, FiCheck, FiEdit2 } from "react-icons/fi";
 import axios from "axios";
 
 function Home() {
-  //const apiDomain = 'https://narugopal-todo.vercel.app';
   const currentURL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : `${window.location.href}/`;
+      : process.env.REACT_APP_API_URL;
 
   const [todoText, setTodoText] = useState({ text: "" });
 
