@@ -91,7 +91,7 @@ function Home() {
                       <h1 className="h4 m-0 text-white fw-bold">Todo</h1>
                     </div>
                     <div className="p-3">
-                      <form onSubmit={addUpdateTodo}>
+                      <form method="" onSubmit={addUpdateTodo}>
                         <div className="">
                           <div className="d-flex">
                             <div className="flex-grow-1 ">
