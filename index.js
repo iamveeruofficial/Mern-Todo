@@ -9,8 +9,6 @@ const routes = require("./router/router");
 app.use(cors());
 
 
-
-
 require("./db/conn");
 
 app.use(express.json());
