@@ -158,7 +158,7 @@ function Home() {
           <div className="container">
             <p>
               Made with 💖 | Design and developed by{" "}
-              <a href="https://iamnarugopal.in/" target="_blank">
+              <a href="https://narugopal.vercel.app/" target="_blank">
                 Naru Gopal
               </a>
             </p>
